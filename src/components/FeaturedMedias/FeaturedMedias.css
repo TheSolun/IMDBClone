@@ -17,20 +17,99 @@
 
 .featured-main-list{
     height: 100%;
+    transition: all ease 0.2s;
 }
 
 .featured-main-item{
     display: inline-block;
 }
 
-.featured-main-item-back:hover{
+/* .featured-main-item-back:hover{
     filter: brightness(90%);
-}
+} */
 
 .featured-main-item-vertical{
     width: inherit;
     height: inherit;
     background: linear-gradient(to top, #000 10%, transparent 90%);
+}
+
+.featured-main-poster,
+.featured-main-poster-plus{
+    position: absolute;
+    top: 47vh;
+    transition: all ease 0.2s;
+}
+
+.featured-main-poster{
+    display: inline-block;
+    width: 12vw;
+    height: 36.7vh;
+}
+
+.featured-main-poster:hover{
+    filter: brightness(93%);
+}
+
+.featured-main-poster-plus,
+.featured-main-poster-plus-border,
+.featured-main-poster-plus-icon{
+    width: 3vw;
+    height: 9vh;
+    cursor: pointer;
+}
+
+.featured-main-poster-plus-border{
+    border: 1px solid rgba(85, 85, 85, 0.7);
+}
+
+.featured-main-poster-plus-icon{
+    background-color: rgba(50, 50, 50, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 6vh;
+    transition: all ease 0.5s;
+}
+
+.featured-main-poster-plus-icon:hover{
+    background-color: rgba(90, 90, 90, 0.9);
+}
+
+.featured-main-text{
+    color: #fff;
+    position: absolute;
+    top: 47vh;;
+    left: 14.9vw;
+    width: 50.2vw;
+    height: 36.7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 1vw;
+    font-weight: lighter;
+}
+
+.featured-main-item-link:hover .featured-main-item-back,
+.featured-main-item-link:hover .featured-main-text-row{
+    filter: brightness(90%);
+}
+
+.featured-main-item-link:hover .featured-main-text-icon{
+    color: yellow;
+}
+
+.featured-main-text-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.featured-main-text-icon{
+    margin-right: 0.5vw;
+}
+
+.featured-main-text-text{
 }
 
 .featured-main-left,
@@ -39,9 +118,20 @@
     width: 3.7vw;
     height: 10vh;
     top: 27vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1vw;
     border: 1px solid #fff;
     border-radius: 5px;
     background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: all ease 0.5s;
+}
+
+.featured-main-left:hover,
+.featured-main-right:hover{
+    color: #ffff00;
 }
 
 .featured-main-left{
@@ -52,20 +142,8 @@
     left: 61.4vw;
 }
 
-.featured-main-poster{
-    position: absolute;
-    display: inline-block;
-    width: 12vw;
-    height: 36.7vh;
-    top: 47vh;
-    left: 4.4vw;
-}
-
-.featured-main-poster:hover{
-    filter: brightness(93%);
-}
-
 .featured-list{
+    visibility: hidden;
     display: inline-block;
     margin-left: 1vw;
     background-color: #0000ff;
