@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import TMDB from './TMDB';
+import FeaturedMedias from './components/FeaturedMedias';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+export default () => {
+
+  const [mediaList, setMediaList] = useState([]);
+  const [featuredMediaList, setFeaturedMediaList] = useState([]);
+
+  useState(()=>{
+
+    const loadAll = async () => {
+
+      let list = await TMDB.getHomeList();
+      setMediaList(list);
+
+      let trendingMovieDay = list.filter(i=>i.slug === 'trending-movie-day')[0].items.results;
+      let trendingTvDay = list.filter(i=>i.slug === 'trending-tv-day')[0].items.results;
+      let trendingMovieTvDay = trendingMovieDay;
+      trendingTvDay.forEach(function(item){
+        trendingMovieTvDay.push(item)
+      });
+      setFeaturedMediaList(trendingMovieTvDay);
+
+
+
+    }
+
+    loadAll();
+
+  },[]);
+
+  return(
+    <div className="page">
+
+      <FeaturedMedias medias={featuredMediaList}/>
+    
     </div>
   );
-}
 
-export default App;
+};
